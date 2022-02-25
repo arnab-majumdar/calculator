@@ -21,12 +21,9 @@ class Calculator {
     }
 
     updateScreen(num) {
-        console.log('update screen', this.curr, this.prev);
         this.curr.value = num;
-        // this.prev.innerText = this.prev.innerText : null;
     }
 }
-
 
 const btnValues = [
     ["9", "8", "7", "+"],
@@ -41,11 +38,26 @@ const previousScreen = document.getElementById('previousScreen');
 const numbers = ["9", "8", "7", "6", "5", "4","3", "2", "1", "0"];
 const operators = ["+",  "-", "x", "/"];
 
+const compute = (firstOperand, secondOperand, operator) => {
+    switch (operator) {
+        case '+':
+            return firstOperand + secondOperand;
+        case '-':
+            return firstOperand - secondOperand;
+        case '/':
+            return firstOperand / secondOperand;
+        case 'x':
+            return firstOperand * secondOperand;
+        default:
+            return;
+    }
+
+};
+
 const calculator = new Calculator(previousScreen, screen);
 
 const calculatorFunc = (e) => {
     e.target.textContent === 'C' ? calculator.clear() : null;
-    console.log(e.target.textContent);
 
     if (numbers.includes(e.target.textContent)) {
         calculator.curr.value = calculator.appendNum(e.target.textContent);
@@ -53,13 +65,18 @@ const calculatorFunc = (e) => {
     }
 
     if (!calculator.prev.innerText && calculator.curr.value && operators.includes(e.target.textContent)) {
-        calculator.selectOperator();
-        console.log('calculator.curr.value', calculator.curr.value);
-        console.log('calculator.prev.innerText', calculator.prev.innerText);
-    } else if (operators.includes(e.target.textContent) && !calculator.curr) {
-        alert('select a number');
+        calculator.selectOperator(e.target.textContent);
+    } else if (operators.includes(e.target.textContent)) {
+        alert('invalid: select a number');
     }
 
+    if (e.target.textContent === '=') {
+        if (calculator.operation && calculator.curr.value && calculator.prev.innerText) {
+            const computedValue = compute(Number(calculator.prev.innerText), Number(calculator.curr.value), calculator.operation);
+            calculator.prev.innerText = calculator.prev.innerText + ' ' + calculator.operation + ' ' + calculator.curr.value + ' ' + e.target.textContent + ' ' + computedValue;
+            calculator.curr.value = computedValue;
+        }
+    }
 };
 
 btnValues.flat().map((item) => {

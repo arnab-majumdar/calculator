@@ -7,6 +7,10 @@ input {
     font-weight: bold;
 }
 
+#previousScreen {
+    margin: 0 2rem;
+}
+
 #calculator {
     margin: 2rem;
     display: grid;
