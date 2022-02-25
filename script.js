@@ -55,8 +55,13 @@ const compute = (firstOperand, secondOperand, operator) => {
 
 const calculator = new Calculator(previousScreen, screen);
 
+const clearCalc = () => {
+    document.getElementById('=').removeAttribute('disabled');
+    calculator.clear();
+}
+
 const calculatorFunc = (e) => {
-    e.target.textContent === 'C' ? calculator.clear() : null;
+    e.target.textContent === 'C' ? clearCalc() : null;
 
     if (numbers.includes(e.target.textContent)) {
         calculator.curr.value = calculator.appendNum(e.target.textContent);

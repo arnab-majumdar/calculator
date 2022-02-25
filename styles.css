@@ -9,10 +9,11 @@ input {
 
 #previousScreen {
     margin: 0 2rem;
+    height: 2rem;
 }
 
 #calculator {
-    margin: 2rem;
+    margin: 0 2rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
