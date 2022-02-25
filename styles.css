@@ -1,0 +1,25 @@
+input {
+    margin: 2rem;
+    width: calc(100% - 4rem);
+    border-radius: 3px;
+    min-height: 2.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#calculator {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    grid-auto-rows: minmax(6rem, auto);
+}
+
+button {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+button:hover {
+    color: blue;
+}
