@@ -5,22 +5,25 @@ class Calculator {
     }
 
     clear () {
-        this.prev = '';
-        this.curr = '';
+        this.prev.innerText = '';
+        this.curr.value = '0';
         this.operation = undefined;
     }
 
     appendNum(num) {
-        return this.curr = this.curr + num;
+        return this.curr.value =  this.curr.value + num;
     }
 
     selectOperator(operator) {
         this.operation = operator;
+        this.prev.innerText = this.curr.value;
+        this.curr.value = '';
     }
 
-    updateScreen() {
-        console.log('update screen', this.curr);
-        this.prev.value =  typeof this.curr === 'string' ? this.curr : null;
+    updateScreen(num) {
+        console.log('update screen', this.curr, this.prev);
+        this.curr.value = num;
+        // this.prev.innerText = this.prev.innerText : null;
     }
 }
 
@@ -41,18 +44,19 @@ const operators = ["+",  "-", "x", "/"];
 const calculator = new Calculator(previousScreen, screen);
 
 const calculatorFunc = (e) => {
+    e.target.textContent === 'C' ? calculator.clear() : null;
+    console.log(e.target.textContent);
+
     if (numbers.includes(e.target.textContent)) {
-        calculator.curr = calculator.appendNum(e.target.textContent);
-        calculator.updateScreen(calculator.curr);
-        console.log('this ',this.curr, this.prev );
-        console.log('calc ',calculator.curr, calculator.prev );
+        calculator.curr.value = calculator.appendNum(e.target.textContent);
+        calculator.updateScreen(calculator.curr.value);
     }
 
-    if (this.curr && operators.includes(e.target.textContent)) {
-
-    } else if (operators.includes(e.target.textContent) && !this.curr) {
-        console.log('this ',this.curr, this.prev );
-        console.log('calc ',calculator.curr, calculator.prev );
+    if (!calculator.prev.innerText && calculator.curr.value && operators.includes(e.target.textContent)) {
+        calculator.selectOperator();
+        console.log('calculator.curr.value', calculator.curr.value);
+        console.log('calculator.prev.innerText', calculator.prev.innerText);
+    } else if (operators.includes(e.target.textContent) && !calculator.curr) {
         alert('select a number');
     }
 
