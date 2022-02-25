@@ -16,12 +16,12 @@ class Calculator {
 
     selectOperator(operator) {
         this.operation = operator;
-        this.prev.innerText = this.curr.value;
+        this.prev.innerText = Number(this.curr.value);
         this.curr.value = '';
     }
 
     updateScreen(num) {
-        this.curr.value = num;
+        this.curr.value = Number(num);
     }
 }
 
@@ -51,7 +51,6 @@ const compute = (firstOperand, secondOperand, operator) => {
         default:
             return;
     }
-
 };
 
 const calculator = new Calculator(previousScreen, screen);
@@ -67,7 +66,7 @@ const calculatorFunc = (e) => {
     if (!calculator.prev.innerText && calculator.curr.value && operators.includes(e.target.textContent)) {
         calculator.selectOperator(e.target.textContent);
     } else if (operators.includes(e.target.textContent)) {
-        alert('invalid: select a number');
+        alert('invalid: please select a number');
     }
 
     if (e.target.textContent === '=') {
@@ -75,6 +74,7 @@ const calculatorFunc = (e) => {
             const computedValue = compute(Number(calculator.prev.innerText), Number(calculator.curr.value), calculator.operation);
             calculator.prev.innerText = calculator.prev.innerText + ' ' + calculator.operation + ' ' + calculator.curr.value + ' ' + e.target.textContent + ' ' + computedValue;
             calculator.curr.value = computedValue;
+            document.getElementById('=').setAttribute('disabled', true);
         }
     }
 };

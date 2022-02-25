@@ -24,6 +24,15 @@ button {
     font-weight: bold;
 }
 
-button:hover {
+button[disabled='false']:hover {
     color: blue;
+}
+
+button[disabled='true'] {
+    color: darkgray;
+}
+
+.disable {
+    cursor: none;
+    background-color: gray;
 }
