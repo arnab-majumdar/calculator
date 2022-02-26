@@ -35,6 +35,8 @@ const btnValues = [
 const calcBody = document.getElementById('calculator');
 const screen = document.getElementById('screen');
 const previousScreen = document.getElementById('previousScreen');
+const operator = document.getElementById('operator');
+const equals = document.getElementById('=');
 const numbers = ["9", "8", "7", "6", "5", "4","3", "2", "1", "0"];
 const operators = ["+",  "-", "x", "/"];
 
@@ -56,8 +58,9 @@ const compute = (firstOperand, secondOperand, operator) => {
 const calculator = new Calculator(previousScreen, screen);
 
 const clearCalc = () => {
-    document.getElementById('=').removeAttribute('disabled');
+    operator.innerText = '';
     calculator.clear();
+    document.getElementById('=').removeAttribute('disabled');
 }
 
 const calculatorFunc = (e) => {
@@ -70,6 +73,8 @@ const calculatorFunc = (e) => {
 
     if (!calculator.prev.innerText && calculator.curr.value && operators.includes(e.target.textContent)) {
         calculator.selectOperator(e.target.textContent);
+        operator.innerText = calculator.operation;
+        document.getElementById('=').removeAttribute('disabled');
     } else if (operators.includes(e.target.textContent)) {
         alert('invalid: please select a number');
     }
@@ -77,7 +82,7 @@ const calculatorFunc = (e) => {
     if (e.target.textContent === '=') {
         if (calculator.operation && calculator.curr.value && calculator.prev.innerText) {
             const computedValue = compute(Number(calculator.prev.innerText), Number(calculator.curr.value), calculator.operation);
-            calculator.prev.innerText = calculator.prev.innerText + ' ' + calculator.operation + ' ' + calculator.curr.value + ' ' + e.target.textContent + ' ' + computedValue;
+            operator.innerText = ' ' + calculator.operation + ' ' + calculator.curr.value;
             calculator.curr.value = computedValue;
             document.getElementById('=').setAttribute('disabled', true);
         }
@@ -92,4 +97,6 @@ btnValues.flat().map((item) => {
     $btn.addEventListener('click', calculatorFunc);
     calcBody.appendChild($btn);
 });
+
+
 
