@@ -36,7 +36,6 @@ const calcBody = document.getElementById('calculator');
 const screen = document.getElementById('screen');
 const previousScreen = document.getElementById('previousScreen');
 const operator = document.getElementById('operator');
-const equals = document.getElementById('=');
 const numbers = ["9", "8", "7", "6", "5", "4","3", "2", "1", "0"];
 const operators = ["+",  "-", "x", "/"];
 
