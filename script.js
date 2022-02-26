@@ -25,7 +25,6 @@ class Calculator {
     }
 
     convertNegativePositive(num) {
-        console.log(num);
         this.curr.value = Number(num)*-1;
     }
 }
@@ -70,7 +69,6 @@ const clearCalc = () => {
 
 const calculatorFunc = (e) => {
     e.target.textContent === 'C' ? clearCalc() : null;
-    console.log(calculator.curr);
     e.target.textContent === '+/-' && calculator.curr.value ? calculator.convertNegativePositive(calculator.curr.value) : calculator.curr.value;
 
     if (numbers.includes(e.target.textContent)) {
