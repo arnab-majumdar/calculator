@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Calculator</h1>
-    <p>
-        <span id="previousScreen"></span>
-        <span id="operator"></span>
-    </p>
+    <div class="wrapper">
+        <h1>Calculator</h1>
+        <p class="results">
+            <span id="previousScreen"></span>
+            <span id="operator"></span>
+        </p>
 
-    <label for="screen" hidden>Calculator Screen</label>
-    <input id="screen" type="text" value="0" disabled />
+        <label for="screen" hidden>Calculator Screen</label>
+        <input id="screen" type="text" value="0" disabled />
 
-    <div id="calculator"></div>
-    <script src="script.js"></script>
+        <div id="calculator"></div>
+        <script src="script.js"></script>
+    </div>
 </body>
 </html>

@@ -13,6 +13,7 @@ body {
 }
 
 h1 {
+    color: coral;
     margin-left: 2rem;
 }
 
@@ -23,6 +24,7 @@ input {
     min-height: 2.5rem;
     font-size: 1rem;
     font-weight: bold;
+    color: white;
 }
 
 #previousScreen {
@@ -35,12 +37,16 @@ input {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
-    grid-auto-rows: minmax(6rem, auto);
+    grid-auto-rows: minmax(5rem, auto);
 }
 
 button {
     font-size: 2rem;
     font-weight: bold;
+}
+
+button:hover {
+    background-color: cornsilk;
 }
 
 button[id='='] {
@@ -64,4 +70,19 @@ button[disabled='true'][id='='] {
 
 button[id='C'] {
     color: darkred;
+}
+
+button[id='C']:hover {
+    color: white;
+    background-color: darkred;
+}
+
+.wrapper {
+    background-color: black;
+    opacity: 0.9;
+    padding: 2rem;
+}
+
+.results {
+    color: white;
 }
