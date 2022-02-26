@@ -4,7 +4,7 @@ class Calculator {
        this.curr = curr;
     }
 
-    clear () {
+    clear() {
         this.prev.innerText = '';
         this.curr.value = '0';
         this.operation = undefined;
@@ -23,6 +23,11 @@ class Calculator {
     updateScreen(num) {
         this.curr.value = Number(num);
     }
+
+    convertNegativePositive(num) {
+        console.log(num);
+        this.curr.value = Number(num)*-1;
+    }
 }
 
 const btnValues = [
@@ -30,6 +35,7 @@ const btnValues = [
     ["6", "5", "4", "-"],
     ["3", "2", "1", "x"],
     ["C", "0", "=", "/"],
+    ["+/-"],
 ];
 
 const calcBody = document.getElementById('calculator');
@@ -64,6 +70,8 @@ const clearCalc = () => {
 
 const calculatorFunc = (e) => {
     e.target.textContent === 'C' ? clearCalc() : null;
+    console.log(calculator.curr);
+    e.target.textContent === '+/-' && calculator.curr.value ? calculator.convertNegativePositive(calculator.curr.value) : calculator.curr.value;
 
     if (numbers.includes(e.target.textContent)) {
         calculator.curr.value = calculator.appendNum(e.target.textContent);

@@ -1,3 +1,17 @@
+@keyframes background {
+    0% { background-color: skyblue; }
+    30% { background-color: aquamarine; }
+    65% { background-color: darkcyan; }
+    100% { background-color: cadetblue; }
+}
+
+body {
+    max-width: 640px;
+    animation: background 5s infinite;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 h1 {
     margin-left: 2rem;
 }
@@ -29,15 +43,25 @@ button {
     font-weight: bold;
 }
 
+button[id='='] {
+    background-color: coral;
+}
+
+button[id='=']:hover {
+    background-color: black;
+    color: coral;
+}
+
 button[disabled='false']:hover {
     color: blue;
 }
 
-button[disabled='true'] {
-    color: darkgray;
+button[disabled='true'][id='='] {
+    cursor: none;
+    background-color: darkgray;
+    color: gray;
 }
 
-.disable {
-    cursor: none;
-    background-color: gray;
+button[id='C'] {
+    color: darkred;
 }
