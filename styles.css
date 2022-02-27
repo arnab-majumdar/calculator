@@ -86,3 +86,9 @@ button[id='C']:hover {
 .results {
     color: white;
 }
+
+.alert {
+    margin-left: 2rem;
+    color: red;
+    font-weight: bold;
+}

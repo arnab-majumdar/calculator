@@ -1,0 +1,22 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "This is an example of a basic calculator that operates addition, multiplication, division, or subtraction on two numbers.",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnab-majumdar/calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnab-majumdar/calculator/issues"
+  },
+  "homepage": "https://github.com/arnab-majumdar/calculator#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}

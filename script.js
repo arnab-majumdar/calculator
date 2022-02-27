@@ -68,8 +68,8 @@ const clearCalc = () => {
 }
 
 const calculatorFunc = (e) => {
-    e.target.textContent === 'C' ? clearCalc() : null;
-    e.target.textContent === '+/-' && calculator.curr.value ? calculator.convertNegativePositive(calculator.curr.value) : calculator.curr.value;
+    e.target.textContent === 'C' && clearCalc();
+    e.target.textContent === '+/-' && calculator.convertNegativePositive(calculator.curr.value);
 
     if (numbers.includes(e.target.textContent)) {
         calculator.curr.value = calculator.appendNum(e.target.textContent);
@@ -81,7 +81,10 @@ const calculatorFunc = (e) => {
         operator.innerText = calculator.operation;
         document.getElementById('=').removeAttribute('disabled');
     } else if (operators.includes(e.target.textContent)) {
-        alert('invalid: please select a number');
+        document.getElementsByClassName('alert')[0].textContent = 'Invalid Operation! Enter a number or press C.';
+        setTimeout(() => {
+            document.getElementsByClassName('alert')[0].textContent = '';
+        }, 2000);
     }
 
     if (e.target.textContent === '=') {
@@ -97,11 +100,8 @@ const calculatorFunc = (e) => {
 btnValues.flat().map((item) => {
     const $btn = document.createElement("button");
     $btn.id = item;
-    $btn.className = 'calcBtn'
+    $btn.className = 'calcBtn';
     $btn.innerText = item;
     $btn.addEventListener('click', calculatorFunc);
     calcBody.appendChild($btn);
 });
-
-
-
